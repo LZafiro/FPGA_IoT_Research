@@ -1,0 +1,132 @@
+|uart_hc05
+clock => clock.IN2
+rx => rx.IN1
+tx <= uart_tx:uartTx.tx
+rx_data[0] <= uart_rx:uartRx.rx_data
+rx_data[1] <= uart_rx:uartRx.rx_data
+rx_data[2] <= uart_rx:uartRx.rx_data
+rx_data[3] <= uart_rx:uartRx.rx_data
+rx_data[4] <= uart_rx:uartRx.rx_data
+rx_data[5] <= uart_rx:uartRx.rx_data
+rx_data[6] <= uart_rx:uartRx.rx_data
+rx_data[7] <= uart_rx:uartRx.rx_data
+
+
+|uart_hc05|uart_baud_rate_generator:baud
+clock => baudRate_count[0].CLK
+clock => baudRate_count[1].CLK
+clock => baudRate_count[2].CLK
+clock => baudRate_count[3].CLK
+clock => baudRate_count[4].CLK
+clock => baudRate_count[5].CLK
+clock => baudRate_count[6].CLK
+clock => baudRate_count[7].CLK
+clock => baudRate_count[8].CLK
+clock => baudRate_count[9].CLK
+clock => baudRate_count[10].CLK
+clock => baudRate_count[11].CLK
+clock => baudRate_count[12].CLK
+clock => baudRate_count[13].CLK
+clock => baudRate_count[14].CLK
+clock => baudRate_count[15].CLK
+reset => baudRate_count[0].PRESET
+reset => baudRate_count[1].ACLR
+reset => baudRate_count[2].ACLR
+reset => baudRate_count[3].ACLR
+reset => baudRate_count[4].ACLR
+reset => baudRate_count[5].ACLR
+reset => baudRate_count[6].ACLR
+reset => baudRate_count[7].ACLR
+reset => baudRate_count[8].ACLR
+reset => baudRate_count[9].ACLR
+reset => baudRate_count[10].ACLR
+reset => baudRate_count[11].ACLR
+reset => baudRate_count[12].ACLR
+reset => baudRate_count[13].ACLR
+reset => baudRate_count[14].ACLR
+reset => baudRate_count[15].ACLR
+baud_tick <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|uart_hc05|uart_rx:uartRx
+clock => rx_data[7]~reg0.CLK
+clock => rx_data[6]~reg0.CLK
+clock => rx_data[5]~reg0.CLK
+clock => rx_data[4]~reg0.CLK
+clock => rx_data[3]~reg0.CLK
+clock => rx_data[2]~reg0.CLK
+clock => rx_data[1]~reg0.CLK
+clock => rx_data[0]~reg0.CLK
+clock => curent_state.CLK
+reset => curent_state.PRESET
+rx => received_data.DATAB
+rx => always3.IN1
+rx => always1.IN0
+rx_enable => always1.IN1
+baud_tick => bit_count[0].CLK
+baud_tick => bit_count[1].CLK
+baud_tick => bit_count[2].CLK
+baud_tick => bit_count[3].CLK
+baud_tick => bit_count[4].CLK
+baud_tick => received_data[0].CLK
+baud_tick => received_data[1].CLK
+baud_tick => received_data[2].CLK
+baud_tick => received_data[3].CLK
+baud_tick => received_data[4].CLK
+baud_tick => received_data[5].CLK
+baud_tick => received_data[6].CLK
+baud_tick => received_data[7].CLK
+baud_tick => start_bit.CLK
+baud_tick => counter[0].CLK
+baud_tick => counter[1].CLK
+baud_tick => counter[2].CLK
+baud_tick => counter[3].CLK
+baud_tick => receive_done~reg0.CLK
+receive_done <= receive_done~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rx_data[7] <= rx_data[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rx_data[6] <= rx_data[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rx_data[5] <= rx_data[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rx_data[4] <= rx_data[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rx_data[3] <= rx_data[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rx_data[2] <= rx_data[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rx_data[1] <= rx_data[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rx_data[0] <= rx_data[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|uart_hc05|uart_tx:uartTx
+clock => curent_state.CLK
+reset => curent_state.PRESET
+tx_enable => next_state.DATAB
+tx_data[0] => tmp_transmit_data.DATAB
+tx_data[1] => tmp_transmit_data.DATAB
+tx_data[2] => tmp_transmit_data.DATAB
+tx_data[3] => tmp_transmit_data.DATAB
+tx_data[4] => tmp_transmit_data.DATAB
+tx_data[5] => tmp_transmit_data.DATAB
+tx_data[6] => tmp_transmit_data.DATAB
+tx_data[7] => tmp_transmit_data.DATAB
+baud_tick => stop_bit.CLK
+baud_tick => transmit_done~reg0.CLK
+baud_tick => bit_count[0].CLK
+baud_tick => bit_count[1].CLK
+baud_tick => bit_count[2].CLK
+baud_tick => bit_count[3].CLK
+baud_tick => bit_count[4].CLK
+baud_tick => tmp_transmit_data[0].CLK
+baud_tick => tmp_transmit_data[1].CLK
+baud_tick => tmp_transmit_data[2].CLK
+baud_tick => tmp_transmit_data[3].CLK
+baud_tick => tmp_transmit_data[4].CLK
+baud_tick => tmp_transmit_data[5].CLK
+baud_tick => tmp_transmit_data[6].CLK
+baud_tick => tmp_transmit_data[7].CLK
+baud_tick => start_bit.CLK
+baud_tick => tx~reg0.CLK
+baud_tick => counter[0].CLK
+baud_tick => counter[1].CLK
+baud_tick => counter[2].CLK
+baud_tick => counter[3].CLK
+transmit_done <= transmit_done~reg0.DB_MAX_OUTPUT_PORT_TYPE
+tx <= tx~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at uart_tx.v(113): always construct contains both blocking and non-blocking assignments File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_tx.v Line: 113

@@ -1,0 +1,161 @@
+// Designed by: Luiz Felipe Raveduti Zafiro - 02/10/2021
+
+
+// Module for the UART_RX (receiver)
+// #########################################################################################
+module uart_rx (
+    input clock, // External board clock (used in state changing -> independent of baud tick)
+    input reset, // Reset signal to IDLE state
+    input rx, // Input recive signal (1 bit -> serial)
+    input rx_enable, // Signal to indicate if the recive is enabled -> // TODO: verify if it is realy necessary
+    input baud_tick, // Tick signal produced by the Baud Rate Generator module 
+    output reg receive_done = 1'd0, // Signal to indicate that the recive is done
+    output reg [0:7] rx_data // Register with the received data
+);
+// #########################################################################################
+    
+
+// Definition of some necessary registers, wires and parameters
+// #########################################################################################
+// Variables that represent each of the states of the state machine
+parameter READ = 1'd0, IDLE = 1'd1;
+// Sets the number of bits of the data recived (in our case we will recieve 8 bits)
+parameter word_size = 4'd8;
+// 1 bit register to store curent and next states of state machine
+reg curent_state, next_state;
+// The start_bit indicates it the current bit is the start bit and 
+// read_enable indicates if the read process is or not enabled
+reg start_bit = 1'd1, read_enable = 1'd0;
+// Register that counts how many bits have been read already (data bits)
+reg [4:0] bit_count = 5'd0;
+// Counter to make sure we get the value of the bit exactly in the midle of it (must count 16 times in our case)
+reg [3:0] counter = 4'd0; 
+// Register that will be used to store recived data by shifting it (will work as our FIFO)
+reg [7:0] received_data = 8'd0;
+// #########################################################################################
+
+
+/* A brief summary of the code organization:
+*   As we are working with state machines we must have some logic to control it
+*   A reset/continue logic
+*   A next state logic
+*   A read enable/disable logic
+*   A data recive logic
+*   A Output assign logic
+*/
+// #########################################################################################
+
+
+// Reset/continue logic
+// #########################################################################################
+always@ (posedge clock or posedge reset)
+begin
+    if(reset) curent_state <= IDLE;
+    else curent_state <= next_state;
+end
+// #########################################################################################
+
+
+// Next state logic
+// #########################################################################################
+always@ (curent_state or rx or rx_enable or receive_done)
+begin
+    case ( curent_state )
+        READ: 
+        begin
+            // If the read process is done, returns to IDLE state
+            if( receive_done == 1'd1 )
+                next_state = IDLE;
+            else next_state = READ;
+        end
+        IDLE:
+        begin
+            // If the state is IDLE and we detect a start bit and the rx_enable is high
+            if( (rx == 1'd0) & rx_enable )
+                next_state = READ;
+            else next_state = IDLE;
+        end 
+        // The default case is to set the next state to IDLE (if something unexpected happens)
+        default: 
+        begin
+            next_state = IDLE;
+        end
+    endcase    
+end
+// #########################################################################################
+
+
+// Read enable/disable logic
+// #########################################################################################
+always@ (curent_state or receive_done)
+begin
+    case( curent_state )
+        READ:
+        begin
+            read_enable <= 1'd1;
+        end
+        IDLE:
+        begin
+            read_enable <= 1'd0;
+        end
+        // The dafault case is to disable the read
+        default:
+        begin
+            read_enable <= 1'd0;
+        end
+    endcase
+end
+// #########################################################################################
+
+
+// Data recive logic
+// #########################################################################################
+always@ (posedge baud_tick) 
+begin
+    // As soon as we are enabled to read, we must set that the reading is not over and increment the counter
+    // that will make sure that we are getting the bit correctly
+    if( read_enable )
+    begin
+        receive_done <= 1'd0;
+        counter <= counter + 1;
+        // We are evaluating the case of the start bit. In the begin of the recieve we must identify
+        // the start bit and count 8ticks to make sure we are in the middle of that bit
+        // now we must count 16 to get in the middle of each bit (considering our baud rate - 9600)
+        if( (counter == 4'd8) & start_bit )
+        begin
+            start_bit <= 1'd0;
+            counter <= 4'd0;
+        end
+        // In this case we are located in the middle of the bit and it is not a start bit and we are still reading 
+        // because we read a bit-number less than the maximum word size
+        if( (counter == 4'd16) & (!start_bit) & (bit_count < word_size) )
+        begin
+            // Here we store the rx input by shifting the received_data register and concatenating the value (FIFO)
+            received_data <= {rx, received_data[7:1]};
+            counter <= 4'd0;
+            bit_count <= bit_count + 1;
+        end
+        // In this case we are in a bit detection but we now exceeded the word_size and we detect rx as 1 (stop bit)
+        if( (counter == 4'd16) & (bit_count == word_size) & (rx == 1'd1) )
+        begin
+            // Resets all counters 
+            bit_count <= 5'd0;
+            counter <= 4'd0;
+            // Sets the recieve as done 
+            receive_done <= 1'd1;
+            // Resets the start_bit signal as high (for the next read)
+            start_bit <= 1'd1;
+        end
+    end
+end
+// #########################################################################################
+
+
+// Output assign logic
+// #########################################################################################
+always @(*)
+begin 
+    rx_data <= received_data;    
+end
+// #########################################################################################
+endmodule

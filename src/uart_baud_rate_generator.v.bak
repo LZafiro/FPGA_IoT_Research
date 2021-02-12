@@ -1,0 +1,22 @@
+module uart_baudrate_generator(
+    input clock,
+    input reset,
+    output reg baud_tick
+);
+
+// Register used to count for tick creation
+reg [15:0] baudRate_count; 
+
+// As we want a baud rate 16x faster than the UART signal (9600)
+parameter boardFrequency = 16'd50000000; // 50MHz
+parameter baudRateValue = 16'd9600; // Baud rate = 9600
+// Calculates how many tick clock pulses we need to count to produce a pulse in the baud rate specified
+// considering the board clock
+reg [15:0] baudRate = ( ( (16'd1 / baudRateValue) / 16'd16 ) / ( 16'd1 / boardFrequency ) ); 
+
+always @(posedge clock or posedge reset)
+    if (reset) baudRate_count <= 16'b1;
+    else if (baud_tick) baudRate_count <= 16'b1;
+         else baudRate_count <= baudRate_count + 1'b1;
+assign baud_tick = (baudRate_count == baudRate);
+endmodule

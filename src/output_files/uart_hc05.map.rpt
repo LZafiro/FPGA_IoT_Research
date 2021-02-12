@@ -1,0 +1,439 @@
+Analysis & Synthesis report for uart_hc05
+Thu Feb 11 20:14:27 2021
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: uart_baud_rate_generator:baud
+ 13. Parameter Settings for User Entity Instance: uart_rx:uartRx
+ 14. Parameter Settings for User Entity Instance: uart_tx:uartTx
+ 15. Port Connectivity Checks: "uart_tx:uartTx"
+ 16. Port Connectivity Checks: "uart_rx:uartRx"
+ 17. Port Connectivity Checks: "uart_baud_rate_generator:baud"
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+ 21. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Feb 11 20:14:27 2021       ;
+; Quartus Prime Version              ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                      ; uart_hc05                                   ;
+; Top-level Entity Name              ; uart_hc05                                   ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 93                                          ;
+;     Total combinational functions  ; 77                                          ;
+;     Dedicated logic registers      ; 65                                          ;
+; Total registers                    ; 65                                          ;
+; Total pins                         ; 11                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; uart_hc05          ; uart_hc05          ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                  ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------+---------+
+; uart_hc05.v                      ; yes             ; User Verilog HDL File  ; A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_hc05.v                ;         ;
+; uart_rx.v                        ; yes             ; User Verilog HDL File  ; A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_rx.v                  ;         ;
+; uart_tx.v                        ; yes             ; User Verilog HDL File  ; A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_tx.v                  ;         ;
+; uart_baud_rate_generator.v       ; yes             ; User Verilog HDL File  ; A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_baud_rate_generator.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                        ;
++---------------------------------------------+--------------------------------------+
+; Resource                                    ; Usage                                ;
++---------------------------------------------+--------------------------------------+
+; Estimated Total logic elements              ; 93                                   ;
+;                                             ;                                      ;
+; Total combinational functions               ; 77                                   ;
+; Logic element usage by number of LUT inputs ;                                      ;
+;     -- 4 input functions                    ; 31                                   ;
+;     -- 3 input functions                    ; 5                                    ;
+;     -- <=2 input functions                  ; 41                                   ;
+;                                             ;                                      ;
+; Logic elements by mode                      ;                                      ;
+;     -- normal mode                          ; 54                                   ;
+;     -- arithmetic mode                      ; 23                                   ;
+;                                             ;                                      ;
+; Total registers                             ; 65                                   ;
+;     -- Dedicated logic registers            ; 65                                   ;
+;     -- I/O registers                        ; 0                                    ;
+;                                             ;                                      ;
+; I/O pins                                    ; 11                                   ;
+;                                             ;                                      ;
+; Embedded Multiplier 9-bit elements          ; 0                                    ;
+;                                             ;                                      ;
+; Maximum fan-out node                        ; uart_baud_rate_generator:baud|Equal0 ;
+; Maximum fan-out                             ; 55                                   ;
+; Total fan-out                               ; 431                                  ;
+; Average fan-out                             ; 2.63                                 ;
++---------------------------------------------+--------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                ;
++------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------------------+--------------+
+; Compilation Hierarchy Node         ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Entity Name              ; Library Name ;
++------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------------------+--------------+
+; |uart_hc05                         ; 77 (1)              ; 65 (0)                    ; 0           ; 0            ; 0       ; 0         ; 11   ; 0            ; |uart_hc05                               ; uart_hc05                ; work         ;
+;    |uart_baud_rate_generator:baud| ; 21 (21)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_hc05|uart_baud_rate_generator:baud ; uart_baud_rate_generator ; work         ;
+;    |uart_rx:uartRx|                ; 23 (23)             ; 28 (28)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_hc05|uart_rx:uartRx                ; uart_rx                  ; work         ;
+;    |uart_tx:uartTx|                ; 32 (32)             ; 21 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |uart_hc05|uart_tx:uartTx                ; uart_tx                  ; work         ;
++------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                          ;
++---------------------------------------+-------------------------------------+
+; Register name                         ; Reason for Removal                  ;
++---------------------------------------+-------------------------------------+
+; uart_tx:uartTx|transmit_done          ; Merged with uart_tx:uartTx|stop_bit ;
+; Total Number of Removed Registers = 1 ;                                     ;
++---------------------------------------+-------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 65    ;
+; Number of registers using Synchronous Clear  ; 1     ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 33    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; uart_tx:uartTx|start_bit               ; 6       ;
+; uart_rx:uartRx|start_bit               ; 4       ;
+; Total number of inverted registers = 2 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |uart_hc05|uart_tx:uartTx|tmp_transmit_data[0] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |uart_hc05|uart_tx:uartTx|bit_count[2]         ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |uart_hc05|uart_rx:uartRx|bit_count[4]         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |uart_hc05|uart_tx:uartTx|counter[3]           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |uart_hc05|uart_rx:uartRx|counter[0]           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_baud_rate_generator:baud ;
++----------------+------------------+----------------------------------------+
+; Parameter Name ; Value            ; Type                                   ;
++----------------+------------------+----------------------------------------+
+; baudRate       ; 0000000101000101 ; Unsigned Binary                        ;
++----------------+------------------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_rx:uartRx ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; READ           ; 0     ; Unsigned Binary                    ;
+; IDLE           ; 1     ; Unsigned Binary                    ;
+; word_size      ; 1000  ; Unsigned Binary                    ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_tx:uartTx ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; WRITE          ; 0     ; Unsigned Binary                    ;
+; IDLE           ; 1     ; Unsigned Binary                    ;
+; word_size      ; 1000  ; Unsigned Binary                    ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_tx:uartTx"                                                                              ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; reset         ; Input  ; Info     ; Stuck at GND                                                                        ;
+; tx_enable     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; tx_data[7..6] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; tx_data[3..2] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; tx_data[5..4] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; tx_data[1..0] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; transmit_done ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "uart_rx:uartRx"                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; reset        ; Input  ; Info     ; Stuck at GND                                                                        ;
+; rx_enable    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; receive_done ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "uart_baud_rate_generator:baud" ;
++-------+-------+----------+--------------------------------+
+; Port  ; Type  ; Severity ; Details                        ;
++-------+-------+----------+--------------------------------+
+; reset ; Input ; Info     ; Stuck at GND                   ;
++-------+-------+----------+--------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 11                          ;
+; cycloneiii_ff         ; 65                          ;
+;     ENA               ; 33                          ;
+;     SCLR              ; 1                           ;
+;     SLD               ; 16                          ;
+;     plain             ; 15                          ;
+; cycloneiii_lcell_comb ; 77                          ;
+;     arith             ; 23                          ;
+;         2 data inputs ; 23                          ;
+;     normal            ; 54                          ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 14                          ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 31                          ;
+;                       ;                             ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 2.31                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+    Info: Processing started: Thu Feb 11 20:14:21 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off uart_hc05 -c uart_hc05
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Warning (10275): Verilog HDL Module Instantiation warning at uart_hc05.v(16): ignored dangling comma in List of Port Connections File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_hc05.v Line: 16
+Info (12021): Found 1 design units, including 1 entities, in source file uart_hc05.v
+    Info (12023): Found entity 1: uart_hc05 File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_hc05.v Line: 1
+Warning (10229): Verilog HDL Expression warning at uart_rx.v(131): truncated literal to match 4 bits File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_rx.v Line: 131
+Warning (10229): Verilog HDL Expression warning at uart_rx.v(139): truncated literal to match 4 bits File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_rx.v Line: 139
+Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
+    Info (12023): Found entity 1: uart_rx File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_rx.v Line: 6
+Warning (10229): Verilog HDL Expression warning at uart_tx.v(130): truncated literal to match 4 bits File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_tx.v Line: 130
+Warning (10229): Verilog HDL Expression warning at uart_tx.v(139): truncated literal to match 4 bits File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_tx.v Line: 139
+Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
+    Info (12023): Found entity 1: uart_tx File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_tx.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file uart_baud_rate_generator.v
+    Info (12023): Found entity 1: uart_baud_rate_generator File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_baud_rate_generator.v Line: 1
+Info (12127): Elaborating entity "uart_hc05" for the top level hierarchy
+Info (12128): Elaborating entity "uart_baud_rate_generator" for hierarchy "uart_baud_rate_generator:baud" File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_hc05.v Line: 16
+Warning (10230): Verilog HDL assignment warning at uart_baud_rate_generator.v(19): truncated value with size 32 to match size of target (16) File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_baud_rate_generator.v Line: 19
+Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:uartRx" File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_hc05.v Line: 26
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(120): truncated value with size 32 to match size of target (4) File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_rx.v Line: 120
+Warning (10230): Verilog HDL assignment warning at uart_rx.v(136): truncated value with size 32 to match size of target (5) File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_rx.v Line: 136
+Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:uartTx" File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_hc05.v Line: 36
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(119): truncated value with size 32 to match size of target (4) File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_tx.v Line: 119
+Warning (10230): Verilog HDL assignment warning at uart_tx.v(136): truncated value with size 32 to match size of target (5) File: A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/uart_tx.v Line: 136
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/output_files/uart_hc05.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 105 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 9 output pins
+    Info (21061): Implemented 94 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 4800 megabytes
+    Info: Processing ended: Thu Feb 11 20:14:27 2021
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:14
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in A:/Wokspace Files/Documentos/FPGA_IoT_Research/src/output_files/uart_hc05.map.smsg.
+
+

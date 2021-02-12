@@ -1,0 +1,94 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dA:/Wokspace Files/Documentos/FPGA_IoT_Research/src/simulation/qsim
+vuart_baud_rate_generator
+Z1 !s110 1613083831
+!i10b 1
+!s100 6JBBQ7V_1@96`4?<TDh>[2
+IHCz9dadU[P@gkeCe5cYTR3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1613083830
+Z4 8uart_hc05.vo
+Z5 Fuart_hc05.vo
+Z6 L0 32
+Z7 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z8 !s108 1613083831.000000
+Z9 !s107 uart_hc05.vo|
+Z10 !s90 -work|work|uart_hc05.vo|
+!i113 1
+Z11 o-work work
+Z12 tCvgOpt 0
+vuart_baud_rate_generator_vlg_vec_tst
+R1
+!i10b 1
+!s100 Vf9T`kFVdaaohekf[39=H3
+IDI@Ic08`dKjgLAcR4bNEg0
+R2
+R0
+R3
+8Waveform10.vwf.vt
+FWaveform10.vwf.vt
+Z13 L0 30
+R7
+r1
+!s85 0
+31
+R8
+!s107 Waveform10.vwf.vt|
+!s90 -work|work|Waveform10.vwf.vt|
+!i113 1
+R11
+R12
+vuart_hc05
+Z14 !s110 1613084421
+!i10b 1
+!s100 _Q<6G=8Vd>YIU9l^1c7om0
+I3IkAQD^hI=laI:hAdN2SQ1
+R2
+R0
+w1613084419
+R4
+R5
+R6
+R7
+r1
+!s85 0
+31
+Z15 !s108 1613084421.000000
+R9
+R10
+!i113 1
+R11
+R12
+vuart_hc05_vlg_vec_tst
+R14
+!i10b 1
+!s100 lQ63KL@8QH0C>BASK02JD2
+I7imb`]TNhM[b:[XB1ld_g3
+R2
+R0
+w1613084418
+8Waveform12.vwf.vt
+FWaveform12.vwf.vt
+R13
+R7
+r1
+!s85 0
+31
+R15
+!s107 Waveform12.vwf.vt|
+!s90 -work|work|Waveform12.vwf.vt|
+!i113 1
+R11
+R12
